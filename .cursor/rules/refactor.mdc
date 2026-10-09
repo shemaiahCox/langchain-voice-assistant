@@ -1,0 +1,41 @@
+---
+description: Use when the user command is "refactor". Organize Python imports and add banner comments.
+alwaysApply: false
+---
+
+# Refactor
+
+When the user says **refactor**, reorganize the target Python file. Keep behavior the same.
+
+## Imports
+
+Put every import at the top under `# -- Imports --`. Remove later and duplicate imports.
+
+1. Standard library, one per line, alphabetical.
+2. Blank line.
+3. Third-party imports, alphabetical by module.
+
+## Banners
+
+- File header: `# ---- Title ----` plus one sentence on what the file does.
+- Each logical block: `# ---- Section name ----`.
+- Small setup blocks, such as imports or env loading: `# -- Name --`.
+
+Match this shape:
+
+```python
+# ---- Voice Assistant ----
+# One sentence describing the file.
+
+# -- Imports --
+
+import os
+
+from langchain_ollama import ChatOllama
+
+# -- Load environment variables --
+
+# ---- Capture audio ----
+
+# ---- Run the agent ----
+```

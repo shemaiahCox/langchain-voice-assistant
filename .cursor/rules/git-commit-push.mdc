@@ -1,0 +1,38 @@
+---
+description: Commit and push only when asked, and never commit secrets
+alwaysApply: true
+---
+
+# Git commit and push
+
+Remote: `git@github.com:shemaiahCox/langchain-voice-assistant.git` (`origin`).
+
+Commit only when the user explicitly asks. Push only when the user explicitly asks. Do not update git config, skip hooks, or force-push `main`.
+
+Never stage `.env`, credentials, `.venv/`, or `__pycache__/`.
+
+## Commit
+
+```bash
+git status
+git diff
+git log -5 --oneline
+
+git add <relevant-files>
+git commit -m "$(cat <<'EOF'
+Short message focused on why.
+
+EOF
+)"
+git status
+```
+
+If a hook rejects the commit, fix the problem and make a new commit. Do not amend unless the user asked and the commit is unpushed and was created in this conversation.
+
+## Push
+
+```bash
+git push -u origin HEAD
+```
+
+Use `git push` when the branch already tracks `origin`. Do not force-push.
